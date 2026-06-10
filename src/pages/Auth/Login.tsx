@@ -31,7 +31,7 @@ interface LoginErrors {
  */
 const Login: React.FC = () => {
   const navigate = useNavigate();
-  const { login, isLoading, error: authError } = useAuth();
+  const { login, isLoading, error: authError, demoMode } = useAuth();
   
   const [formData, setFormData] = useState<LoginFormData>({
     email: '',
@@ -94,6 +94,11 @@ const Login: React.FC = () => {
       setFormData((prev) => ({ ...prev, email: rememberedEmail, rememberMe: true }));
     }
   }, []);
+
+  const handleDemoMode = () => {
+    demoMode();
+    navigate('/dashboard/overview');
+  };
 
   return (
     <AuthContainer>
@@ -197,6 +202,15 @@ const Login: React.FC = () => {
               <span className="px-2 bg-white text-gray-500">or</span>
             </div>
           </div>
+
+          {/* Demo Mode Button */}
+          <Button
+            type="button"
+            onClick={handleDemoMode}
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+          >
+            🎯 Try Demo Mode
+          </Button>
 
           {/* Register Link */}
           <p className="text-center text-sm text-gray-600">

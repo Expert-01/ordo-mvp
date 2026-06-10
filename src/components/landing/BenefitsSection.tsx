@@ -37,30 +37,30 @@ const BenefitsSection: React.FC<BenefitsSectionProps> = ({
       <div className="max-w-5xl mx-auto">
         {/* Section Header */}
         <div className="mb-16 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3 uppercase tracking-wide leading-tight">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3 uppercase tracking-wider leading-tight">
             {title}
           </h2>
-          <p className="text-lg text-gray-600">
+          <p className="text-lg md:text-xl text-gray-700 font-medium">
             {subtitle}
           </p>
         </div>
 
         {/* Benefits Container */}
         <div className="max-w-2xl mx-auto flex flex-col gap-4 md:gap-6">
-          {defaultBenefits.map((benefit) => (
+          {defaultBenefits.map((benefit, index) => (
             <div
               key={benefit.id}
-              className="flex items-start gap-4 md:gap-6 p-6 md:p-8 bg-gradient-to-r from-ordo-green-700 to-ordo-green-600 rounded-lg min-h-[120px] md:min-h-[120px]"
+              className="flex items-center gap-4 md:gap-6 p-6 md:p-8 bg-gradient-to-r from-ordo-green-700 to-ordo-green-600 rounded-lg hover:shadow-lg hover:from-ordo-green-600 hover:to-ordo-green-500 transition-all duration-300 min-h-[100px] md:min-h-[120px]"
               role="listitem"
-              aria-label={benefit.text}
+              aria-label={`Benefit ${index + 1}: ${benefit.text}`}
             >
               {/* Checkmark Icon */}
-              <div className="flex-shrink-0 mt-1">
-                <CheckCircle2 className="w-6 h-6 text-white flex-shrink-0" aria-hidden="true" />
+              <div className="flex-shrink-0 flex items-center justify-center">
+                <CheckCircle2 className="w-6 h-6 md:w-7 md:h-7 text-white flex-shrink-0" aria-hidden="true" />
               </div>
 
               {/* Benefit Text */}
-              <p className="flex-1 text-white text-lg md:text-xl font-semibold leading-snug">
+              <p className="flex-1 text-white text-base md:text-lg lg:text-xl font-semibold leading-relaxed">
                 {benefit.text}
               </p>
             </div>

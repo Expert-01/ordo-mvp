@@ -28,12 +28,18 @@ const LandingNavbar: React.FC = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center justify-center flex-1">
-            <div className="flex items-center gap-8 px-8 py-2 bg-[#E6FEDA] ">
+            <div className="flex items-center gap-8 px-8 py-2 bg-[#E6FEDA] rounded-full">
               <button
                 onClick={() => scrollToSection('problem')}
                 className="text-sm font-medium text-ordo-green-900 hover:text-ordo-green-700 transition-colors duration-200 cursor-pointer"
               >
                 Problem
+              </button>
+              <button
+                onClick={() => scrollToSection('benefits')}
+                className="text-sm font-medium text-ordo-green-900 hover:text-ordo-green-700 transition-colors duration-200 cursor-pointer"
+              >
+                Benefits
               </button>
               <button
                 onClick={() => scrollToSection('features')}
@@ -48,8 +54,8 @@ const LandingNavbar: React.FC = () => {
                 How it Works
               </button>
               <a
-                href="/auth/signup"
-                className="px-6 py-2 text-sm font-medium text-white bg-ordo-green-900 hover:bg-ordo-green-800 transition-colors duration-200"
+                href="/auth/login"
+                className="px-6 py-2 text-sm font-medium text-white bg-ordo-green-900 hover:bg-ordo-green-800 transition-colors duration-200 rounded-full"
               >
                 Get Started
               </a>
@@ -75,7 +81,7 @@ const LandingNavbar: React.FC = () => {
                 onClick={() => scrollToSection('problem')}
                 className="block w-full text-left px-4 py-2 text-sm font-medium text-white hover:bg-ordo-green-700 rounded transition-colors duration-200"
               >
-                Mission
+                Problem
               </button>
               <button
                 onClick={() => scrollToSection('benefits')}
@@ -97,8 +103,8 @@ const LandingNavbar: React.FC = () => {
               </button>
               <div className="flex gap-3 pt-4 px-4">
                 <a
-                  href="/auth/signup"
-                  className="flex-1 px-4 py-2 text-sm font-medium text-white bg-ordo-green-950 hover:bg-ordo-green-900 rounded-md transition-colors duration-200 text-center"
+                  href="/auth/login"
+                  className="flex-1 px-4 py-2 text-sm font-medium text-white bg-ordo-green-900 hover:bg-ordo-green-800 rounded transition-colors duration-200 text-center"
                 >
                   Get Started
                 </a>

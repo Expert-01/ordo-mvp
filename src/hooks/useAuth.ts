@@ -24,6 +24,7 @@ export interface UseAuthReturn {
   register: (email: string, username: string, password: string, firstName?: string, lastName?: string) => Promise<boolean>;
   logout: () => void;
   clearError: () => void;
+  demoMode: () => void;
 }
 
 /**
@@ -149,6 +150,29 @@ export const useAuth = (): UseAuthReturn => {
     setError(null);
   }, []);
 
+  const demoMode = useCallback(() => {
+    const demoUser: User = {
+      id: 999,
+      uuid: 'demo-user-uuid',
+      email: 'demo@ordo.ai',
+      username: 'demouser',
+      first_name: 'Demo',
+      last_name: 'User',
+    };
+
+    const demoToken = 'demo_token_' + Date.now();
+
+    // Store in localStorage
+    localStorage.setItem('user', JSON.stringify(demoUser));
+    localStorage.setItem('token', demoToken);
+    localStorage.setItem('demo_mode', 'true');
+
+    // Update state
+    setUser(demoUser);
+    setToken(demoToken);
+    setError(null);
+  }, []);
+
   return {
     user,
     token,
@@ -158,5 +182,6 @@ export const useAuth = (): UseAuthReturn => {
     register,
     logout,
     clearError,
+    demoMode,
   };
 };

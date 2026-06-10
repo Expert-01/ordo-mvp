@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { LogOut, Menu, X } from 'lucide-react';
 import { Button } from '../common/Button';
+import { isDemoMode } from '../../utils/api';
 
 interface NavbarProps {
   userName?: string;
@@ -18,6 +19,11 @@ export const Navbar: React.FC<NavbarProps> = ({ userName = 'Student', onLogout }
         <div className="flex items-center">
           <div className="text-2xl font-bold text-green-600">ORDO</div>
           <span className="ml-2 text-sm text-gray-600 hidden sm:inline">Your Career Companion</span>
+          {isDemoMode() && (
+            <span className="ml-4 inline-block px-2 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full">
+              🎭 DEMO MODE
+            </span>
+          )}
         </div>
 
         {/* Desktop Menu */}
