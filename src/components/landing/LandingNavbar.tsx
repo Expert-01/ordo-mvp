@@ -13,59 +13,43 @@ const LandingNavbar: React.FC = () => {
   }
 
   return (
-    <nav className="fixed top-0 w-full bg-gradient-to-r from-ordo-green-900 to-ordo-green-800 shadow-lg z-50">
+    <nav className="fixed top-0 w-full z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
             <a 
               href="/" 
-              className="text-2xl font-bold text-white hover:text-ordo-green-100 transition-colors duration-200"
+              className="text-2xl orbitron font-bold text-[#212E25] hover:text-ordo-[#006633] transition-colors duration-200"
             >
               ORDO
             </a>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            <div className="flex items-center space-x-8">
+          <div className="hidden md:flex items-center justify-center flex-1">
+            <div className="flex items-center gap-8 px-8 py-2 bg-[#E6FEDA] ">
               <button
-                onClick={() => scrollToSection('mission')}
-                className="text-sm font-medium text-white hover:text-ordo-green-100 transition-colors duration-200 cursor-pointer"
+                onClick={() => scrollToSection('problem')}
+                className="text-sm font-medium text-ordo-green-900 hover:text-ordo-green-700 transition-colors duration-200 cursor-pointer"
               >
-                Mission
+                Problem
               </button>
               <button
                 onClick={() => scrollToSection('features')}
-                className="text-sm font-medium text-white hover:text-ordo-green-100 transition-colors duration-200 cursor-pointer"
+                className="text-sm font-medium text-ordo-green-900 hover:text-ordo-green-700 transition-colors duration-200 cursor-pointer"
               >
                 Features
               </button>
               <button
-                onClick={() => scrollToSection('community')}
-                className="text-sm font-medium text-white hover:text-ordo-green-100 transition-colors duration-200 cursor-pointer"
-              >
-                Community
-              </button>
-              <button
                 onClick={() => scrollToSection('how')}
-                className="text-sm font-medium text-white hover:text-ordo-green-100 transition-colors duration-200 cursor-pointer"
+                className="text-sm font-medium text-ordo-green-900 hover:text-ordo-green-700 transition-colors duration-200 cursor-pointer"
               >
                 How it Works
               </button>
-            </div>
-
-            {/* CTA Buttons */}
-            <div className="flex items-center gap-4 ml-8 pl-8 border-l border-ordo-green-700">
-              <a
-                href="/auth/login"
-                className="px-5 py-2 text-sm font-medium text-ordo-green-900 bg-white rounded-md hover:bg-ordo-green-50 transition-colors duration-200"
-              >
-                Login
-              </a>
               <a
                 href="/auth/signup"
-                className="px-6 py-2 text-sm font-medium text-white bg-ordo-green-950 hover:bg-ordo-green-900 rounded-md transition-colors duration-200 shadow-md"
+                className="px-6 py-2 text-sm font-medium text-white bg-ordo-green-900 hover:bg-ordo-green-800 transition-colors duration-200"
               >
                 Get Started
               </a>
@@ -88,10 +72,16 @@ const LandingNavbar: React.FC = () => {
           <div className="md:hidden pb-6 border-t border-ordo-green-700">
             <div className="space-y-3 pt-4">
               <button
-                onClick={() => scrollToSection('mission')}
+                onClick={() => scrollToSection('problem')}
                 className="block w-full text-left px-4 py-2 text-sm font-medium text-white hover:bg-ordo-green-700 rounded transition-colors duration-200"
               >
                 Mission
+              </button>
+              <button
+                onClick={() => scrollToSection('benefits')}
+                className="block w-full text-left px-4 py-2 text-sm font-medium text-white hover:bg-ordo-green-700 rounded transition-colors duration-200"
+              >
+                Benefits
               </button>
               <button
                 onClick={() => scrollToSection('features')}
@@ -100,24 +90,12 @@ const LandingNavbar: React.FC = () => {
                 Features
               </button>
               <button
-                onClick={() => scrollToSection('community')}
-                className="block w-full text-left px-4 py-2 text-sm font-medium text-white hover:bg-ordo-green-700 rounded transition-colors duration-200"
-              >
-                Community
-              </button>
-              <button
                 onClick={() => scrollToSection('how')}
                 className="block w-full text-left px-4 py-2 text-sm font-medium text-white hover:bg-ordo-green-700 rounded transition-colors duration-200"
               >
                 How it Works
               </button>
               <div className="flex gap-3 pt-4 px-4">
-                <a
-                  href="/auth/login"
-                  className="flex-1 px-4 py-2 text-sm font-medium text-ordo-green-900 bg-white rounded-md hover:bg-ordo-green-50 transition-colors duration-200 text-center"
-                >
-                  Login
-                </a>
                 <a
                   href="/auth/signup"
                   className="flex-1 px-4 py-2 text-sm font-medium text-white bg-ordo-green-950 hover:bg-ordo-green-900 rounded-md transition-colors duration-200 text-center"

@@ -22,7 +22,7 @@ const Hero: React.FC = () => {
         </div>
 
         {/*Bottom Left corner text for the hero section*/}
-        <div className="absolute bottom-4 top-[120vh] left-4 text-[20px] opacity-70 w-[300px] text-left">
+        <div className="absolute bottom-4 top-[70vh] left-4 text-[20px] opacity-70 w-[300px] text-left">
             <p>Helping students transform knowledge into skills,
                  experience, and career opportunities.
             </p>
