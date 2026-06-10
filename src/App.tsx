@@ -1,4 +1,3 @@
-import React from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import './App.css'
 import Landing from './pages/Landing'
@@ -13,6 +12,9 @@ import { DashboardLayout } from './pages/Dashboard/DashboardLayout'
 import Overview from './pages/Dashboard/Overview'
 import Roadmap from './pages/Dashboard/Roadmap'
 import Opportunities from './pages/Dashboard/Opportunities'
+import Projects from './pages/Dashboard/Projects'
+import Portfolio from './pages/Dashboard/Portfolio'
+import Chat from './pages/Dashboard/Chat'
 
 function App() {
   return (
@@ -36,11 +38,10 @@ function App() {
           <Route path="overview" element={<Overview />} />
           <Route index element={<Overview />} />
           <Route path="roadmap" element={<Roadmap />} />
+          <Route path="projects" element={<Projects />} />
           <Route path="opportunities" element={<Opportunities />} />
-          {/* Placeholder routes - to be implemented */}
-          {/* <Route path="projects" element={<Projects />} />
+          <Route path="portfolio" element={<Portfolio />} />
           <Route path="chat" element={<Chat />} />
-          <Route path="profile" element={<Profile />} /> */}
         </Route>
         
         {/* Catch all */}

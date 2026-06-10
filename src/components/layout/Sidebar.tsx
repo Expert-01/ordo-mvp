@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, Map, Briefcase, Lightbulb, MessageSquare, User, ChevronLeft, ChevronRight } from 'lucide-react';
+import { LayoutDashboard, Map, Code2, Lightbulb, MessageSquare, FileText, ChevronLeft, ChevronRight } from 'lucide-react';
 import clsx from 'clsx';
 
 interface SidebarProps {
@@ -13,10 +13,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ userName = 'Student' }) => {
   const navItems = [
     { icon: LayoutDashboard, label: 'Dashboard', path: '/dashboard' },
     { icon: Map, label: 'Roadmap', path: '/dashboard/roadmap' },
-    { icon: Briefcase, label: 'Projects', path: '/dashboard/projects' },
+    { icon: Code2, label: 'Projects', path: '/dashboard/projects' },
     { icon: Lightbulb, label: 'Opportunities', path: '/dashboard/opportunities' },
+    { icon: FileText, label: 'Portfolio', path: '/dashboard/portfolio' },
     { icon: MessageSquare, label: 'ORDO AI', path: '/dashboard/chat' },
-    { icon: User, label: 'Profile', path: '/dashboard/profile' },
   ];
 
   return (
@@ -82,10 +82,10 @@ export const MobileNavigation: React.FC<SidebarProps> = ({ userName = 'Student' 
   const navItems = [
     { icon: LayoutDashboard, label: 'Dashboard', path: '/dashboard' },
     { icon: Map, label: 'Roadmap', path: '/dashboard/roadmap' },
-    { icon: Briefcase, label: 'Projects', path: '/dashboard/projects' },
+    { icon: Code2, label: 'Projects', path: '/dashboard/projects' },
     { icon: Lightbulb, label: 'Opportunities', path: '/dashboard/opportunities' },
+    { icon: FileText, label: 'Portfolio', path: '/dashboard/portfolio' },
     { icon: MessageSquare, label: 'ORDO AI', path: '/dashboard/chat' },
-    { icon: User, label: 'Profile', path: '/dashboard/profile' },
   ];
 
   return (

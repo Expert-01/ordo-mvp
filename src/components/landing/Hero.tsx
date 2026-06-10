@@ -1,5 +1,4 @@
 import React from 'react'
-import Navbar from '../layout/Navbar'
 
 const Hero: React.FC = () => {
   return (
@@ -13,9 +12,7 @@ const Hero: React.FC = () => {
         backgroundRepeat: 'no-repeat'
       }}
     >
-        <span className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-ordo-green-900/80 to-ordo-green-900/80 z-0">
-              <Navbar />
-              </span>
+     
 
       <div className="max-w-6xl mx-auto px-6 py-2 text-center text-white relative z-10">
         <h1 className="text-4xl md:text-5xl font-medium tracking-tight mb-6 orbitron">"Closing the gap between knowledge and expertise"</h1>
