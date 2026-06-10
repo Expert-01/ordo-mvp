@@ -1,0 +1,21 @@
+:root{
+  --ordo-green-900: #0f4024;
+  --ordo-green-800: #164e2a;
+  --ordo-green-700: #1f6033;
+  --ordo-green-600: #2a7a44;
+  --ordo-green-500: #348f4d;
+  --ordo-green-400: #6fbf88;
+  --ordo-green-300: #9cc7a3;
+  --ordo-cream: #f6f7f2;
+  --ordo-neutral: transparent;
+}
+
+/* Small utility classes for consistency */
+.text-ordo-green-900{color:var(--ordo-green-900)}
+.bg-ordo-green-700{background-color:var(--ordo-green-700)}
+.bg-ordo-green-500{background-color:var(--ordo-green-500)}
+.bg-ordo-green-800{background-color:var(--ordo-green-800)}
+.border-ordo-green-700{border-color:var(--ordo-green-700)}
+
+  --ordo-nav-bg: #e6f7e8;
+  --ordo-nav-accent: #122a20;
