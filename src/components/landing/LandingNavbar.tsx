@@ -54,7 +54,7 @@ const LandingNavbar: React.FC = () => {
                 How it Works
               </button>
               <a
-                href="/auth/login"
+                href="/login"
                 className="px-6 py-2 text-sm font-medium text-white bg-ordo-green-900 hover:bg-ordo-green-800 transition-colors duration-200 rounded-full"
               >
                 Get Started
@@ -103,7 +103,7 @@ const LandingNavbar: React.FC = () => {
               </button>
               <div className="flex gap-3 pt-4 px-4">
                 <a
-                  href="/auth/login"
+                  href="/login"
                   className="flex-1 px-4 py-2 text-sm font-medium text-white bg-ordo-green-900 hover:bg-ordo-green-800 rounded transition-colors duration-200 text-center"
                 >
                   Get Started
