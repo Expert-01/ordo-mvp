@@ -19,9 +19,8 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ userName = 'Gi
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#F4FFF3] mt-18">
       {/* Navbar */}
-      <Navbar userName={userName} onLogout={handleLogout} />
 
       <div className="flex">
         {/* Desktop Sidebar */}
@@ -34,12 +33,12 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ userName = 'Gi
         <main
           className={clsx(
             'flex-1 transition-all duration-300',
-            'md:ml-64 md:pt-0', // Add left margin for desktop to account for sidebar
-            'pt-4 px-4 md:px-8 py-6'
+            'md:ml-64 md:pt-0',
+            'px-6 md:px-12 py-8'
           )}
         >
           {/* Content Container with max-width */}
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w- mx-auto">
             <Outlet />
           </div>
         </main>

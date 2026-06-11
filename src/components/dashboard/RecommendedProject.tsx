@@ -1,4 +1,5 @@
 import React from 'react';
+import { Briefcase } from 'lucide-react';
 import { Card } from '../common/Card';
 import { Badge } from '../common/Badge';
 import { Button } from '../common/Button';
@@ -18,16 +19,16 @@ export const RecommendedProject: React.FC<RecommendedProjectProps> = ({
 }) => {
   return (
     <Card>
-      <h2 className="text-xl font-bold text-gray-900 mb-4">Recommended Project</h2>
+      <h2 className="text-lg font-bold text-gray-900 mb-4">Recommended Project</h2>
 
       {/* Project Preview Image */}
-      <div className="bg-green-100 rounded-lg h-24 mb-4 flex items-center justify-center text-green-600 text-3xl">
-        📋
+      <div className="bg-green-100 rounded-lg h-20 mb-4 flex items-center justify-center text-green-600">
+        <Briefcase size={32} className="text-green-600" />
       </div>
 
       {/* Project Info */}
-      <h3 className="font-semibold text-gray-900 mb-2">{title}</h3>
-      <p className="text-sm text-gray-600 mb-4">{description}</p>
+      <h3 className="font-semibold text-gray-900 mb-2 text-sm">{title}</h3>
+      <p className="text-xs text-gray-600 mb-4 leading-relaxed">{description}</p>
 
       {/* Skills */}
       {skills.length > 0 && (
@@ -41,7 +42,7 @@ export const RecommendedProject: React.FC<RecommendedProjectProps> = ({
       )}
 
       {/* Action Button */}
-      <Button fullWidth variant="primary" onClick={onViewDetails}>
+      <Button fullWidth variant="primary" size="sm" onClick={onViewDetails}>
         View Project Details
       </Button>
     </Card>

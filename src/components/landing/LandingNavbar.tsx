@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Menu, X } from 'lucide-react'
-
+import { motion } from 'framer-motion'
+import  ordo_icon
 const LandingNavbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -12,23 +13,45 @@ const LandingNavbar: React.FC = () => {
     }
   }
 
+  const navPillVariant = {
+    initial: { opacity: 0, y: -20 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.8, delay: 0.1 }
+  }
+
+  const logoVariant = {
+    initial: { opacity: 0, x: -20 },
+    animate: { opacity: 1, x: 0 },
+    transition: { duration: 0.8, delay: 0 }
+  }
+
   return (
     <nav className="fixed top-0 w-full z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <div className="flex-shrink-0">
+          <motion.div 
+            className="flex-shrink-0"
+            initial={logoVariant.initial}
+            animate={logoVariant.animate}
+            transition={logoVariant.transition}
+          >
             <a 
               href="/" 
-              className="text-2xl orbitron font-bold text-[#212E25] hover:text-ordo-[#006633] transition-colors duration-200"
+              className="text-2xl orbitron font-bold text-[#E2EEE0] hover:text-ordo-[#006633] transition-colors duration-200"
             >
               ORDO
             </a>
-          </div>
+          </motion.div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center justify-center flex-1">
-            <div className="flex items-center gap-8 px-8 py-2 bg-[#E6FEDA] rounded-full">
+            <motion.div 
+              className="flex items-center gap-8 px-8 py-2 bg-[#E6FEDA] "
+              initial={navPillVariant.initial}
+              animate={navPillVariant.animate}
+              transition={navPillVariant.transition}
+            >
               <button
                 onClick={() => scrollToSection('problem')}
                 className="text-sm font-medium text-ordo-green-900 hover:text-ordo-green-700 transition-colors duration-200 cursor-pointer"
@@ -55,11 +78,11 @@ const LandingNavbar: React.FC = () => {
               </button>
               <a
                 href="/login"
-                className="px-6 py-2 text-sm font-medium text-white bg-ordo-green-900 hover:bg-ordo-green-800 transition-colors duration-200 rounded-full"
+                className="px-6 py-2 text-sm font-medium text-white bg-ordo-green-900 hover:bg-ordo-green-800 transition-colors duration-200 "
               >
                 Get Started
               </a>
-            </div>
+            </motion.div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -103,7 +126,7 @@ const LandingNavbar: React.FC = () => {
               </button>
               <div className="flex gap-3 pt-4 px-4">
                 <a
-                  href="/login"
+                  href="/auth/signup"
                   className="flex-1 px-4 py-2 text-sm font-medium text-white bg-ordo-green-900 hover:bg-ordo-green-800 rounded transition-colors duration-200 text-center"
                 >
                   Get Started

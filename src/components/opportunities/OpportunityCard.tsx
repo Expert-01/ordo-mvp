@@ -1,4 +1,5 @@
 import React from 'react';
+import { Briefcase, Shirt, GraduationCap, Trophy, Save } from 'lucide-react';
 import { Card } from '../common/Card';
 import { Badge } from '../common/Badge';
 import { Button } from '../common/Button';
@@ -22,10 +23,10 @@ interface OpportunityCardProps {
 }
 
 const typeConfig = {
-  internship: { badge: 'primary', icon: '💼', label: 'Internship' },
-  job: { badge: 'success', icon: '👔', label: 'Job' },
-  scholarship: { badge: 'secondary', icon: '🎓', label: 'Scholarship' },
-  hackathon: { badge: 'warning', icon: '🏆', label: 'Hackathon' },
+  internship: { badge: 'primary', icon: Briefcase, label: 'Internship' },
+  job: { badge: 'success', icon: Shirt, label: 'Job' },
+  scholarship: { badge: 'secondary', icon: GraduationCap, label: 'Scholarship' },
+  hackathon: { badge: 'warning', icon: Trophy, label: 'Hackathon' },
 };
 
 export const OpportunityCard: React.FC<OpportunityCardProps> = ({
@@ -34,6 +35,7 @@ export const OpportunityCard: React.FC<OpportunityCardProps> = ({
   onSave,
 }) => {
   const config = typeConfig[opportunity.type];
+  const IconComponent = config.icon;
 
   return (
     <Card className="hover:shadow-lg transition-shadow">
@@ -42,7 +44,7 @@ export const OpportunityCard: React.FC<OpportunityCardProps> = ({
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1">
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-2xl">{config.icon}</span>
+              <IconComponent size={24} className="text-green-600" />
               <Badge variant={config.badge as any}>{config.label}</Badge>
             </div>
             <h3 className="text-lg font-semibold text-gray-900">{opportunity.title}</h3>
@@ -83,8 +85,8 @@ export const OpportunityCard: React.FC<OpportunityCardProps> = ({
           <Button fullWidth variant="primary" size="sm" onClick={onView}>
             View Details
           </Button>
-          <Button fullWidth variant="ghost" size="sm" onClick={onSave}>
-            💾
+          <Button fullWidth variant="ghost" size="sm" onClick={onSave} title="Save opportunity">
+            <Save size={16} />
           </Button>
         </div>
       </div>

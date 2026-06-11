@@ -85,7 +85,9 @@ const OnboardingStep4: React.FC = () => {
   return (
     <div className="space-y-8">
       {/* Step Indicator */}
-      <StepIndicator currentStep={4} />
+      <StepIndicator currentStep={10} totalSteps={10} labels={[
+        'Welcome','Profile','Goal','Current Level','Interests','Skills','Commitment','Learning Style','Experience','Confirm'
+      ]} />
 
       {isGenerating ? (
         // Loading State

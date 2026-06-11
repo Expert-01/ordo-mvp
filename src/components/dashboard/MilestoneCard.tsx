@@ -25,18 +25,10 @@ export const MilestoneCard: React.FC<MilestoneCardProps> = ({
   return (
     <Card>
       <div>
-        <p className="text-sm text-gray-600 mb-3">Current Milestone</p>
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">{title}</h3>
+        <p className="text-xs text-gray-600 mb-2 lg:mb-1.5">Current Milestone</p>
+        <h3 className="text-sm font-semibold text-gray-900 mb-2 lg:mb-1.5 line-clamp-2 lg:mb-9">{title}</h3>
         <ProgressBar progress={progress} showPercentage label="" height="md" />
-        <Button
-          fullWidth
-          variant="primary"
-          size="sm"
-          onClick={handleClick}
-          className="mt-4"
-        >
-          Continue Learning
-        </Button>
+
       </div>
     </Card>
   );

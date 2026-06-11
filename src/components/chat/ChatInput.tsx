@@ -1,36 +1,35 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Button } from '../common/Button';
-
+import {Paperclip, Mic, ArrowUp} from 'lucide-react';
 interface ChatInputProps {
-  onSendMessage?: (message: string) => void;
+  onSendMessage: (message: string) => void;
   isLoading?: boolean;
   placeholder?: string;
 }
 
-export const ChatInput: React.FC<ChatInputProps> = ({
-  onSendMessage,
-  isLoading = false,
-  placeholder = 'Ask me anything...',
-}) => {
+const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, isLoading = false, placeholder = "What's the plan?" }) => {
   const [message, setMessage] = useState('');
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
-  // Auto-resize textarea
   useEffect(() => {
-    if (textareaRef.current) {
-      textareaRef.current.style.height = 'auto';
-      textareaRef.current.style.height = `${Math.min(textareaRef.current.scrollHeight, 120)}px`;
-    }
+    // Auto-resize textarea to fit content
+    const ta = textareaRef.current;
+    if (!ta) return;
+    ta.style.height = '0px';
+    const scrollHeight = ta.scrollHeight;
+    ta.style.height = Math.min(scrollHeight, 300) + 'px';
   }, [message]);
 
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setMessage(e.target.value);
+  };
+
   const handleSend = () => {
-    if (message.trim() && !isLoading) {
-      onSendMessage?.(message.trim());
-      setMessage('');
-      if (textareaRef.current) {
-        textareaRef.current.style.height = 'auto';
-      }
-    }
+    const trimmed = message.trim();
+    if (!trimmed || isLoading) return;
+    onSendMessage(trimmed);
+    setMessage('');
+    // keep focus for quick follow-up
+    textareaRef.current?.focus();
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -41,35 +40,52 @@ export const ChatInput: React.FC<ChatInputProps> = ({
   };
 
   return (
-    <div className="border-t border-gray-200 bg-white p-4 space-y-3">
-      {/* Message Input */}
-      <div className="flex gap-3">
+    <div className="w-full max-w-4xl">
+      <div className="relative bg-white border border-green-200 rounded-xl p-12 shadow-inner">
         <textarea
           ref={textareaRef}
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          onKeyDown={handleKeyDown}
+          className="w-full resize-none bg-transparent outline-none text-gray-700 text-lg placeholder-gray-500 pr-20"
           placeholder={placeholder}
-          disabled={isLoading}
+          value={message}
+          onChange={handleChange}
+          onKeyDown={handleKeyDown}
           rows={1}
-          className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 disabled:bg-gray-100 resize-none max-h-[120px]"
-          style={{ overflow: 'hidden' }}
+          aria-label="Chat input"
         />
-        <Button
-          variant="primary"
-          onClick={handleSend}
-          disabled={!message.trim() || isLoading}
-          className="h-auto px-4 py-3"
-        >
-          {isLoading ? '⏳' : '➤'}
-        </Button>
-      </div>
 
-      {/* Helper Text */}
-      <div className="flex items-center justify-between text-xs text-gray-500 px-4">
-        <span>Shift + Enter for new line</span>
-        <span>{message.length} characters</span>
+        {/* left small icon (placeholder) */}
+        <button
+          type="button"
+          className="absolute left-4 bottom-4 w-8 h-8 rounded-full bg-green-900 text-green-100 flex items-center justify-center"
+          aria-hidden
+        >
+          <Paperclip size={10}/>
+        </button>
+
+        {/* right controls */}
+        <div className="absolute right-4 bottom-3 flex items-center gap-3">
+          <button
+            type="button"
+            className="text-green-600 p-2 rounded-md"
+            aria-hidden
+            title="Voice (placeholder)"
+          >
+            <Mic/>
+          </button>
+
+          <button
+            type="button"
+            onClick={handleSend}
+            disabled={isLoading || !message.trim()}
+            className={`ml-2 w-10 h-10 rounded-md flex items-center justify-center text-white ${isLoading || !message.trim() ? 'bg-green-300 cursor-not-allowed' : 'bg-green-900 hover:opacity-95'}`}
+            aria-label="Send message"
+          >
+            {isLoading ? '…' : '↑'}
+          </button>
+        </div>
       </div>
     </div>
   );
 };
+
+export default ChatInput;

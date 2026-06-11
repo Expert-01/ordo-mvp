@@ -74,6 +74,7 @@ const FeaturesSection: React.FC<FeaturesSectionProps> = () => {
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="mb-20 text-center">
+       
           <SectionHeader
             title="Introducing ORDO"
             subtitle="Your Complete Student Success Ecosystem"
@@ -89,7 +90,7 @@ const FeaturesSection: React.FC<FeaturesSectionProps> = () => {
             <div
               key={feature.id}
               className={`
-                bg-gradient-to-br ${feature.gradientFrom} ${feature.gradientTo}
+                bg-[#334C2E]
                 rounded-2xl p-8 md:p-10 min-h-[280px]
                 flex flex-col justify-between
                 hover:shadow-2xl hover:scale-105 transition-all duration-300

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Briefcase, Shirt, GraduationCap, Trophy } from 'lucide-react';
 import { Card } from '../common/Card';
 import { Badge } from '../common/Badge';
 
@@ -7,7 +8,7 @@ interface Opportunity {
   title: string;
   type: 'internship' | 'job' | 'scholarship' | 'hackathon';
   matchPercent: number;
-  icon?: string;
+  icon?: React.ReactNode;
 }
 
 interface TopOpportunitiesPreviewProps {
@@ -16,17 +17,17 @@ interface TopOpportunitiesPreviewProps {
 }
 
 const typeConfig = {
-  internship: { badge: 'primary', icon: '💼', label: 'Internship' },
-  job: { badge: 'success', icon: '👔', label: 'Job' },
-  scholarship: { badge: 'secondary', icon: '🎓', label: 'Scholarship' },
-  hackathon: { badge: 'warning', icon: '🏆', label: 'Hackathon' },
+  internship: { badge: 'primary', icon: Briefcase, label: 'Internship' },
+  job: { badge: 'success', icon: Shirt, label: 'Job' },
+  scholarship: { badge: 'secondary', icon: GraduationCap, label: 'Scholarship' },
+  hackathon: { badge: 'warning', icon: Trophy, label: 'Hackathon' },
 };
 
 export const TopOpportunitiesPreview: React.FC<TopOpportunitiesPreviewProps> = ({
   opportunities = [
-    { id: '1', title: 'Software Intern', type: 'internship', matchPercent: 85, icon: '💼' },
-    { id: '2', title: 'Tech Hackathon 2026', type: 'hackathon', matchPercent: 72, icon: '🏆' },
-    { id: '3', title: 'Full Stack Developer', type: 'job', matchPercent: 68, icon: '👔' },
+    { id: '1', title: 'Software Intern', type: 'internship', matchPercent: 85 },
+    { id: '2', title: 'Tech Hackathon 2026', type: 'hackathon', matchPercent: 72 },
+    { id: '3', title: 'Full Stack Developer', type: 'job', matchPercent: 68 },
   ],
   onViewAll,
 }) => {
@@ -38,28 +39,29 @@ export const TopOpportunitiesPreview: React.FC<TopOpportunitiesPreviewProps> = (
 
   return (
     <Card>
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-bold text-gray-900">Top Opportunities For You</h2>
+      <div className="flex items-center justify-between mb-5">
+        <h2 className="text-lg font-bold text-gray-900">Top Opportunities For You</h2>
         <button
           onClick={onViewAll}
-          className="text-green-600 hover:text-green-700 font-medium text-sm"
+          className="text-green-600 hover:text-green-700 font-medium text-xs"
         >
           View all →
         </button>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
         {opportunities.map((opp) => {
           const config = typeConfig[opp.type];
+          const IconComponent = config.icon;
           return (
-            <div key={opp.id} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+            <div key={opp.id} className="border border-gray-200 rounded-lg p-3 hover:shadow-md transition-shadow">
               {/* Icon/Placeholder */}
-              <div className="bg-gray-100 rounded h-24 mb-3 flex items-center justify-center text-3xl">
-                {opp.icon || config.icon}
+              <div className="bg-gray-100 rounded h-16 mb-3 flex items-center justify-center text-green-600">
+                {opp.icon || <IconComponent size={28} />}
               </div>
 
               {/* Title */}
-              <p className="font-semibold text-gray-900 mb-2">{opp.title}</p>
+              <p className="font-semibold text-gray-900 mb-2 text-sm">{opp.title}</p>
 
               {/* Type Badge */}
               <Badge variant={config.badge as any} className="mb-2">
@@ -67,7 +69,7 @@ export const TopOpportunitiesPreview: React.FC<TopOpportunitiesPreviewProps> = (
               </Badge>
 
               {/* Match Percentage */}
-              <p className={`text-sm font-medium ${getMatchColor(opp.matchPercent)}`}>
+              <p className={`text-xs font-medium ${getMatchColor(opp.matchPercent)}`}>
                 {opp.matchPercent}% match
               </p>
             </div>

@@ -205,7 +205,7 @@ const Roadmap: React.FC = () => {
           </p>
 
           {/* Skills Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 w-[374px] gap-4 mt-6">
             {data.skills.map((skill) => (
               <div
                 key={skill.id}

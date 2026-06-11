@@ -1,4 +1,5 @@
 import React from 'react';
+import { CheckCircle2, Minus, AlertCircle } from 'lucide-react';
 import { Card } from '../common/Card';
 
 interface MatchBadgeProps {
@@ -14,14 +15,16 @@ export const MatchBadge: React.FC<MatchBadgeProps> = ({ percentage, showLabel = 
   };
 
   const getIcon = (percent: number) => {
-    if (percent >= 80) return '✓';
-    if (percent >= 60) return '~';
-    return '!';
+    if (percent >= 80) return CheckCircle2;
+    if (percent >= 60) return Minus;
+    return AlertCircle;
   };
+
+  const IconComponent = getIcon(percentage);
 
   return (
     <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium ${getColor(percentage)}`}>
-      <span>{getIcon(percentage)}</span>
+      <IconComponent size={16} />
       {showLabel && <span>{percentage}% match</span>}
     </div>
   );

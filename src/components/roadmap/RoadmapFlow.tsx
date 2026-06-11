@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { CheckCircle2, Cog, Lock } from 'lucide-react';
 import { Card } from '../common/Card';
 import { RoadmapNode } from './RoadmapNode';
 import { MilestonePanel } from './MilestonePanel';
@@ -108,9 +109,9 @@ export const RoadmapFlow: React.FC<RoadmapFlowProps> = ({
                         : 'bg-gray-300 text-gray-600'
                     }`}
                   >
-                    {node.status === 'completed' && '✓'}
-                    {node.status === 'in-progress' && '⚙️'}
-                    {node.status === 'locked' && '🔒'}
+                    {node.status === 'completed' && <CheckCircle2 size={20} />}
+                    {node.status === 'in-progress' && <Cog size={20} />}
+                    {node.status === 'locked' && <Lock size={20} />}
                   </div>
 
                   {/* Connector line to next item */}

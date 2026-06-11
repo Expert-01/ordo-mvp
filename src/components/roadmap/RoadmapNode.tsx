@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { CheckCircle2, Cog, Lock } from 'lucide-react';
 import { Card } from '../common/Card';
 import { Badge } from '../common/Badge';
 
@@ -96,12 +97,15 @@ export const RoadmapNode: React.FC<RoadmapNodeProps> = ({ node, onClick }) => {
       {/* Status Badge */}
       <div className="mb-3">
         <Badge
-          variant={node.status === 'completed' ? 'primary' : node.status === 'in-progress' ? 'secondary' : 'secondary'}
-          className={colors.bg}
+          variant={status === 'completed' ? 'primary' : status === 'in-progress' ? 'secondary' : 'secondary'}
+          className={`${colors.bg} flex items-center gap-1`}
         >
-          {node.status === 'completed' && '✓ Completed'}
-          {node.status === 'in-progress' && '⚙️ In Progress'}
-          {node.status === 'locked' && '🔒 Locked'}
+          {status === 'completed' && <CheckCircle2 size={14} />}
+          {status === 'in-progress' && <Cog size={14} />}
+          {status === 'locked' && <Lock size={14} />}
+          {status === 'completed' && 'Completed'}
+          {status === 'in-progress' && 'In Progress'}
+          {status === 'locked' && 'Locked'}
         </Badge>
       </div>
 

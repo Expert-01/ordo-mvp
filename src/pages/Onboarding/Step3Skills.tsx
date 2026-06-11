@@ -107,8 +107,8 @@ const OnboardingStep3: React.FC = () => {
         JSON.stringify({ skillLevels })
       );
 
-      // Navigate to step 4
-      navigate('/onboarding/step4');
+      // Navigate to commitment step next
+      navigate('/onboarding/stepCommitment');
     } catch (error) {
       console.error('Failed to save skills:', error);
     } finally {
@@ -119,7 +119,9 @@ const OnboardingStep3: React.FC = () => {
   return (
     <div className="space-y-8">
       {/* Step Indicator */}
-      <StepIndicator currentStep={3} />
+      <StepIndicator currentStep={6} totalSteps={10} labels={[
+        'Welcome','Profile','Goal','Current Level','Interests','Skills','Commitment','Learning Style','Experience','Confirm'
+      ]} />
 
       {/* Step Title */}
       <div>

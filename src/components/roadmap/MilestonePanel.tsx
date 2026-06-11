@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { CheckCircle2, Cog, Lock, BookOpen, Link as LinkIcon, Clock, Lightbulb } from 'lucide-react';
 import { Card } from '../common/Card';
 import { Badge } from '../common/Badge';
 import { Button } from '../common/Button';
@@ -65,17 +66,20 @@ export const MilestonePanel: React.FC<MilestonePanelProps> = ({
                 <h2 className="text-3xl font-bold text-gray-900">{title}</h2>
                 <Badge
                   variant={status === 'completed' ? 'primary' : 'secondary'}
-                  className={
+                  className={`flex items-center gap-1 ${
                     status === 'completed'
                       ? 'bg-green-600 text-white'
                       : status === 'in-progress'
                       ? 'bg-blue-500 text-white'
                       : 'bg-gray-400 text-white'
-                  }
+                  }`}
                 >
-                  {status === 'completed' && '✓ Completed'}
-                  {status === 'in-progress' && '⚙️ In Progress'}
-                  {status === 'locked' && '🔒 Locked'}
+                  {status === 'completed' && <CheckCircle2 size={16} />}
+                  {status === 'in-progress' && <Cog size={16} />}
+                  {status === 'locked' && <Lock size={16} />}
+                  {status === 'completed' && 'Completed'}
+                  {status === 'in-progress' && 'In Progress'}
+                  {status === 'locked' && 'Locked'}
                 </Badge>
               </div>
               <p className="text-gray-600 text-lg">{description}</p>
@@ -85,8 +89,9 @@ export const MilestonePanel: React.FC<MilestonePanelProps> = ({
           {/* Meta Info */}
           <div className="flex flex-wrap gap-2 mt-3">
             {estimatedHours && (
-              <Badge variant="secondary" className="text-xs">
-                ⏱️ {estimatedHours} hours
+              <Badge variant="secondary" className="flex items-center gap-1 text-xs">
+                <Clock size={14} />
+                {estimatedHours} hours
               </Badge>
             )}
             {difficulty && (
@@ -123,7 +128,10 @@ export const MilestonePanel: React.FC<MilestonePanelProps> = ({
         {/* Required Skills Section */}
         {requiredSkills.length > 0 && (
           <div>
-            <h3 className="font-semibold text-gray-900 mb-3 text-lg">📚 Required Skills</h3>
+            <h3 className="flex items-center gap-2 font-semibold text-gray-900 mb-3 text-lg">
+              <BookOpen size={20} />
+              Required Skills
+            </h3>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
               {requiredSkills.map((skill) => (
                 <div
@@ -144,8 +152,9 @@ export const MilestonePanel: React.FC<MilestonePanelProps> = ({
               onClick={() => setExpanded(!expanded)}
               className="w-full flex items-center justify-between p-3 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors"
             >
-              <h3 className="font-semibold text-gray-900">
-                🔗 Recommended Resources ({recommendedResources.length})
+              <h3 className="flex items-center gap-2 font-semibold text-gray-900">
+                <LinkIcon size={18} />
+                Recommended Resources ({recommendedResources.length})
               </h3>
               <span className={`transform transition-transform ${expanded ? 'rotate-180' : ''}`}>
                 ▼
@@ -202,8 +211,9 @@ export const MilestonePanel: React.FC<MilestonePanelProps> = ({
         {/* Info Box */}
         {status === 'locked' && (
           <div className="p-3 bg-gray-100 border border-gray-300 rounded-lg">
-            <p className="text-sm text-gray-700">
-              <span className="font-semibold">🔒 Locked:</span> Complete the previous milestone to unlock this one.
+            <p className="flex items-center gap-2 text-sm text-gray-700">
+              <Lock size={16} />
+              <span className="font-semibold">Locked:</span> Complete the previous milestone to unlock this one.
             </p>
           </div>
         )}

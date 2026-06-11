@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { CheckCircle2, Clock, Package } from 'lucide-react';
 import { Card } from '../common/Card';
 import { Badge } from '../common/Badge';
 import { Button } from '../common/Button';
@@ -33,6 +34,12 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   onContinue,
   onView,
 }) => {
+  const statusIcons = {
+    'completed': CheckCircle2,
+    'in-progress': Clock,
+    'available': Package,
+  };
+
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
       case 'beginner':
@@ -47,16 +54,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   };
 
   const getStatusIcon = (status: string) => {
-    switch (status) {
-      case 'completed':
-        return '✅';
-      case 'in-progress':
-        return '⚙️';
-      case 'available':
-        return '🚀';
-      default:
-        return '📦';
-    }
+    return statusIcons[status as keyof typeof statusIcons] || Package;
   };
 
   return (
@@ -66,7 +64,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1">
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-2xl">{getStatusIcon(project.status)}</span>
+              {React.createElement(getStatusIcon(project.status), { size: 24, className: 'text-green-600' })}
               <h3 className="text-lg font-semibold text-gray-900">{project.title}</h3>
             </div>
             <p className="text-sm text-gray-600">{project.description}</p>

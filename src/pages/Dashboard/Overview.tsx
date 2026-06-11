@@ -173,12 +173,12 @@ const Overview: React.FC = () => {
   // ============================================================================
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 bg-[#F4FFF3]">
       {/* Section 1: Hero Greeting */}
       <HeroSection userName={userName} />
 
-      {/* Section 2: Quick Stats Grid (4 cards) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {/* Section 2: Quick Stats Grid (wider 3-column layout) */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Card A: Employability Score */}
         <EmployabilityCard
           score={studentStats.employabilityScore}
@@ -200,25 +200,24 @@ const Overview: React.FC = () => {
         <NextActionCard
           title={nextAction.title}
           estimatedMinutes={nextAction.estimatedMinutes}
-          priority={nextAction.priority}
+          priority={nextAction.priority}  
         />
 
         {/* Card D: Profile Completion */}
-        <ProfileCompletionCard
-          completionPercent={studentStats.profileCompletion}
-          missingItems={['Portfolio Projects', 'Certifications']}
-        />
+      
       </div>
 
       {/* Section 3: Career Roadmap Preview */}
-      <RoadmapPreview
-        milestones={milestones}
-        onViewFull={() => navigate('/dashboard/roadmap')}
-        totalMilestones={8}
-      />
+      <div className="mt-2">
+        <RoadmapPreview
+          milestones={milestones}
+          onViewFull={() => navigate('/dashboard/roadmap')}
+          totalMilestones={8}
+        />
+      </div>
 
       {/* Section 4: Recommended Project & Top Opportunities */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         {/* Left Column: Recommended Project */}
         <RecommendedProject
           title={recommendedProject.title}
@@ -260,15 +259,17 @@ const Overview: React.FC = () => {
       </div>
 
       {/* Section 5: Quick Tips */}
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-        <div className="flex gap-3">
-          <div className="text-2xl">💡</div>
-          <div>
-            <h3 className="font-semibold text-blue-900">Quick Tip</h3>
-            <p className="text-sm text-blue-800 mt-1">
-              Complete your current milestone to unlock new projects and opportunities.
-              You're {currentMilestone.progress}% done with SQL Basics!
-            </p>
+      <div className="mt-2">
+        <div className="bg-blue-50 border border-blue-200 rounded-lg p-5">
+          <div className="flex gap-3">
+            <div className="text-2xl flex-shrink-0">💡</div>
+            <div>
+              <h3 className="font-semibold text-blue-900 text-sm">Quick Tip</h3>
+              <p className="text-sm text-blue-800 mt-1">
+                Complete your current milestone to unlock new projects and opportunities.
+                You're {currentMilestone.progress}% done with SQL Basics!
+              </p>
+            </div>
           </div>
         </div>
       </div>

@@ -54,6 +54,7 @@ export const ProjectsSidebar: React.FC<ProjectsSidebarProps> = ({
           <div className="space-y-2">
             {statuses.map((status) => (
               <button
+                type="button"
                 key={status.value}
                 onClick={() => onStatusChange?.(status.value)}
                 className={`w-full text-left px-3 py-2 rounded-lg transition-colors flex items-center gap-2 ${
@@ -75,6 +76,7 @@ export const ProjectsSidebar: React.FC<ProjectsSidebarProps> = ({
           <div className="space-y-2">
             {difficulties.map((diff) => (
               <button
+                type="button"
                 key={diff.value}
                 onClick={() => onDifficultyChange?.(diff.value)}
                 className={`w-full text-left px-3 py-2 rounded-lg transition-colors text-sm ${
@@ -97,11 +99,11 @@ export const ProjectsSidebar: React.FC<ProjectsSidebarProps> = ({
           <div className="space-y-2">
             {skillOptions.map((skill) => (
               <button
+                type="button"
                 key={skill}
                 onClick={() => onSkillChange?.(skill === 'All Skills' ? '' : skill)}
                 className={`w-full text-left px-3 py-2 rounded-lg transition-colors text-sm ${
-                  (selectedSkill === '' && skill === 'All Skills') ||
-                  selectedSkill === skill
+                  (selectedSkill === '' && skill === 'All Skills') || selectedSkill === skill
                     ? 'bg-green-100 text-green-700 font-medium'
                     : 'text-gray-700 hover:bg-gray-100'
                 }`}

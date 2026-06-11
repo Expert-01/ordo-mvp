@@ -21,13 +21,13 @@ export const StatBox: React.FC<StatBoxProps> = ({
   className,
 }) => {
   return (
-    <div className={clsx('flex items-center', className)}>
-      {icon && <div className="mr-4 text-green-600">{icon}</div>}
-      <div>
-        <p className="text-sm text-gray-600 mb-1">{label}</p>
-        <div className="flex items-baseline">
-          <span className="text-3xl font-bold text-gray-900">{value}</span>
-          {unit && <span className="text-lg text-gray-500 ml-1">{unit}</span>}
+    <div className={clsx('flex items-start gap-2 lg:gap-3', className)}>
+      {icon && <div className="mt-0.5 text-green-600 flex-shrink-0">{icon}</div>}
+      <div className="flex-1 min-w-0">
+        <p className="text-xs lg:text-sm text-gray-600 mb-1">{label}</p>
+        <div className="flex items-baseline flex-wrap gap-1">
+          <span className="text-2xl lg:text-3xl font-bold text-gray-900">{value}</span>
+          {unit && <span className="text-sm lg:text-lg text-gray-500">{unit}</span>}
         </div>
         {trend && trendValue && (
           <p className={clsx('text-xs mt-1', trend === 'up' ? 'text-green-600' : 'text-red-600')}>

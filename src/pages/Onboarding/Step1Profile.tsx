@@ -119,8 +119,8 @@ const OnboardingStep1: React.FC = () => {
         })
       );
 
-      // Navigate to step 2
-      navigate('/onboarding/step2');
+      // Navigate to Goal step next
+      navigate('/onboarding/stepGoal');
     } catch (error) {
       setErrors({ general: 'Failed to save profile. Please try again.' });
     } finally {
@@ -131,7 +131,9 @@ const OnboardingStep1: React.FC = () => {
   return (
     <div className="space-y-8">
       {/* Step Indicator */}
-      <StepIndicator currentStep={1} />
+      <StepIndicator currentStep={2} totalSteps={10} labels={[
+        'Welcome','Profile','Goal','Current Level','Interests','Skills','Commitment','Learning Style','Experience','Confirm'
+      ]} />
 
       {/* Step Title */}
       <div>

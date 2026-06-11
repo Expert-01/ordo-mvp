@@ -1,4 +1,5 @@
 import React from 'react';
+import { Clock, GitBranch, ExternalLink } from 'lucide-react';
 import { Card } from '../common/Card';
 import { Badge } from '../common/Badge';
 import { Button } from '../common/Button';
@@ -55,8 +56,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onEdit, onDel
               <Badge variant="secondary" className={`text-xs ${getDifficultyColor(project.difficulty)}`}>
                 {project.difficulty}
               </Badge>
-              <Badge variant="secondary" className="text-xs">
-                ⏱️ {project.estimatedHours}h
+              <Badge variant="secondary" className="flex items-center gap-1 text-xs">
+                <Clock size={12} />
+                {project.estimatedHours}h
               </Badge>
             </div>
           </div>
@@ -89,9 +91,10 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onEdit, onDel
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block px-3 py-1 bg-gray-800 text-white rounded text-xs hover:bg-gray-900 transition-colors"
+              className="inline-flex items-center gap-1 px-3 py-1 bg-gray-800 text-white rounded text-xs hover:bg-gray-900 transition-colors"
             >
-              📌 GitHub
+              <GitBranch size={14} />
+              GitHub
             </a>
           )}
           {project.liveUrl && (
@@ -99,9 +102,10 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onEdit, onDel
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block px-3 py-1 bg-blue-600 text-white rounded text-xs hover:bg-blue-700 transition-colors"
+              className="inline-flex items-center gap-1 px-3 py-1 bg-blue-600 text-white rounded text-xs hover:bg-blue-700 transition-colors"
             >
-              🔗 Live Demo
+              <ExternalLink size={14} />
+              Live Demo
             </a>
           )}
         </div>

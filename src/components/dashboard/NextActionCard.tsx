@@ -16,9 +16,9 @@ export const NextActionCard: React.FC<NextActionCardProps> = ({
   return (
     <Card>
       <div>
-        <p className="text-sm text-gray-600 mb-3">Next Action</p>
-        <h3 className="text-lg font-semibold text-gray-900 mb-3">{title}</h3>
-        <p className="text-sm text-gray-600 mb-4">
+        <p className="text-xs text-gray-600 mb-2 lg:mb-1.5">Next Action</p>
+        <h3 className="text-sm font-semibold text-gray-900 mb-2 lg:mb-1.5 line-clamp-2">{title}</h3>
+        <p className="text-xs text-gray-600 mb-2 lg:mb-1.5">
           Estimated Time: {estimatedDays} day{estimatedDays !== 1 ? 's' : ''}
         </p>
         <Button fullWidth variant="primary" size="sm" onClick={onStart}>

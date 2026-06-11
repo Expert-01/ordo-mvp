@@ -1,4 +1,5 @@
 import React from 'react';
+import { CheckCircle2 } from 'lucide-react';
 import clsx from 'clsx';
 
 interface InterestChipsProps {
@@ -33,9 +34,9 @@ export const InterestChips: React.FC<InterestChipsProps> = ({
   return (
     <div className="space-y-3">
       {/* Selected Count */}
-      <p className="text-sm text-gray-600">
+      <p className="flex items-center gap-1 text-sm text-gray-600">
         {selectedInterests.length}/{minSelection} minimum selected
-        {selectedInterests.length >= minSelection && ' ✓'}
+        {selectedInterests.length >= minSelection && <CheckCircle2 size={14} className="text-green-600" />}
       </p>
 
       {/* Chips Grid */}

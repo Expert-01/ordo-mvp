@@ -214,7 +214,7 @@ const Projects: React.FC = () => {
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 mt-18">
       {/* Page Header */}
       <div>
         <h1 className="text-3xl font-bold text-gray-900">Learning Projects</h1>

@@ -1,6 +1,6 @@
 import React from 'react';
+import { GraduationCap, BookOpen, Briefcase, Compass, Lightbulb, Bug } from 'lucide-react';
 import { Card } from '../common/Card';
-import { Button } from '../common/Button';
 
 interface ConversationStarterProps {
   onPromptSelect?: (prompt: string) => void;
@@ -8,32 +8,32 @@ interface ConversationStarterProps {
 
 const suggestedPrompts = [
   {
-    icon: '🎓',
+    icon: GraduationCap,
     title: 'Explain React Hooks',
     description: 'Break down how React Hooks work',
   },
   {
-    icon: '📚',
+    icon: BookOpen,
     title: 'Study Plan for ML',
     description: 'Create a study roadmap for machine learning',
   },
   {
-    icon: '💼',
+    icon: Briefcase,
     title: 'Portfolio Tips',
     description: 'Get advice on building your portfolio',
   },
   {
-    icon: '🎯',
+    icon: Compass,
     title: 'Career Guidance',
     description: 'Explore career paths in tech',
   },
   {
-    icon: '💡',
+    icon: Lightbulb,
     title: 'Project Ideas',
     description: 'Get inspired with project ideas',
   },
   {
-    icon: '🐛',
+    icon: Bug,
     title: 'Debug My Code',
     description: 'Help me fix code issues',
   },
@@ -57,32 +57,37 @@ export const ConversationStarter: React.FC<ConversationStarterProps> = ({
 
         {/* Suggested Prompts Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
-          {suggestedPrompts.map((prompt, index) => (
-            <button
-              key={index}
-              onClick={() => onPromptSelect?.(prompt.title)}
-              className="text-left p-4 border border-gray-200 rounded-lg hover:border-green-400 hover:bg-green-50 transition-all group"
-            >
-              <div className="flex items-start gap-3">
-                <span className="text-2xl flex-shrink-0">{prompt.icon}</span>
-                <div className="flex-1">
-                  <p className="font-medium text-gray-900 group-hover:text-green-700">
-                    {prompt.title}
-                  </p>
-                  <p className="text-xs text-gray-500 group-hover:text-gray-600">
-                    {prompt.description}
-                  </p>
+          {suggestedPrompts.map((prompt, index) => {
+            const IconComponent = prompt.icon;
+            return (
+              <button
+                type="button"
+                key={index}
+                onClick={() => onPromptSelect?.(prompt.title)}
+                className="text-left p-4 border border-gray-200 rounded-lg hover:border-green-400 hover:bg-green-50 transition-all group"
+              >
+                <div className="flex items-start gap-3">
+                  <IconComponent size={24} className="text-green-600 flex-shrink-0" />
+                  <div className="flex-1">
+                    <p className="font-medium text-gray-900 group-hover:text-green-700">
+                      {prompt.title}
+                    </p>
+                    <p className="text-xs text-gray-500 group-hover:text-gray-600">
+                      {prompt.description}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </button>
-          ))}
+              </button>
+            );
+          })}
         </div>
 
         {/* Tips */}
         <Card className="bg-blue-50 border border-blue-200">
           <div className="space-y-2">
-            <p className="text-sm font-medium text-blue-900">
-              💡 Tips for better responses:
+            <p className="flex items-center gap-2 text-sm font-medium text-blue-900">
+              <Lightbulb size={16} />
+              Tips for better responses:
             </p>
             <ul className="space-y-1 text-xs text-blue-800">
               <li>• Be specific about what you want to learn</li>

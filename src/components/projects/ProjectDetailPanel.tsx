@@ -1,4 +1,5 @@
 import React from 'react';
+import { Clock, BookOpen, CheckCircle2, Rocket } from 'lucide-react';
 import { Card } from '../common/Card';
 import { Badge } from '../common/Badge';
 import { Button } from '../common/Button';
@@ -87,7 +88,10 @@ export const ProjectDetailPanel: React.FC<ProjectDetailPanelProps> = ({
           >
             {project.difficulty}
           </Badge>
-          <Badge variant="secondary">⏱️ {project.estimatedHours} hours</Badge>
+          <Badge variant="secondary" className="flex items-center gap-1">
+            <Clock size={14} />
+            {project.estimatedHours} hours
+          </Badge>
         </div>
 
         {/* Long Description */}
@@ -140,7 +144,7 @@ export const ProjectDetailPanel: React.FC<ProjectDetailPanelProps> = ({
             <ul className="space-y-2">
               {project.learningOutcomes.map((outcome, idx) => (
                 <li key={idx} className="flex gap-2 text-gray-700">
-                  <span className="text-green-600 font-bold">✓</span>
+                  <CheckCircle2 size={16} className="text-green-600 flex-shrink-0" />
                   <span>{outcome}</span>
                 </li>
               ))}
@@ -151,7 +155,10 @@ export const ProjectDetailPanel: React.FC<ProjectDetailPanelProps> = ({
         {/* Resources */}
         {project.resources && project.resources.length > 0 && (
           <div>
-            <h3 className="font-semibold text-gray-900 mb-3">📚 Resources</h3>
+            <h3 className="flex items-center gap-2 font-semibold text-gray-900 mb-3">
+              <BookOpen size={20} />
+              Resources
+            </h3>
             <div className="space-y-2">
               {project.resources.map((resource, idx) => (
                 <a

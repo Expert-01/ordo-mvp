@@ -23,7 +23,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
     <div className={centered ? 'text-center' : ''}>
       {/* Main Title */}
       <h2
-        className={`${titleSizeMap[titleSize]} font-bold text-ordo-green-900 mb-4 leading-tight`}
+        className={`${titleSizeMap[titleSize]} font-bold text-ordo-green-900 mb-4 leading-tight orbitron`}
       >
         {title}
       </h2>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { CheckCircle2, Lightbulb } from 'lucide-react';
 import { Card } from '../common/Card';
 import { Badge } from '../common/Badge';
 
@@ -48,7 +49,10 @@ export const SkillGapAnalysis: React.FC<SkillGapAnalysisProps> = ({
           {/* Mastered Skills */}
           {requiredSkills.some((s) => hasSkill(s)) && (
             <div>
-              <p className="text-xs font-medium text-gray-600 mb-2">Mastered Skills ✓</p>
+              <p className="flex items-center gap-1 text-xs font-medium text-gray-600 mb-2">
+                <CheckCircle2 size={14} />
+                Mastered Skills
+              </p>
               <div className="flex flex-wrap gap-2">
                 {requiredSkills
                   .filter((s) => hasSkill(s))
@@ -79,8 +83,9 @@ export const SkillGapAnalysis: React.FC<SkillGapAnalysisProps> = ({
         {/* Learning Suggestion */}
         {missingSkills.length > 0 && (
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
-            <p className="text-sm text-blue-900">
-              💡 Focus on learning <span className="font-semibold">{missingSkills[0]}</span> to improve your match for this opportunity.
+            <p className="flex items-center gap-2 text-sm text-blue-900">
+              <Lightbulb size={16} />
+              Focus on learning <span className="font-semibold">{missingSkills[0]}</span> to improve your match for this opportunity.
             </p>
           </div>
         )}
