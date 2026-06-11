@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { motion } from 'framer-motion'
-import  ordo_icon
+import OrdoIcon from './shared/OrdoIcon'
 const LandingNavbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -36,11 +36,9 @@ const LandingNavbar: React.FC = () => {
             animate={logoVariant.animate}
             transition={logoVariant.transition}
           >
-            <a 
-              href="/" 
-              className="text-2xl orbitron font-bold text-[#E2EEE0] hover:text-ordo-[#006633] transition-colors duration-200"
-            >
-              ORDO
+            <a href="/" className="flex items-center text-2xl orbitron font-bold text-[#E2EEE0] hover:text-ordo-[#006633] transition-colors duration-200">
+              <OrdoIcon className="w-8 h-8 mr-2" />
+              <span>ORDO</span>
             </a>
           </motion.div>
 
