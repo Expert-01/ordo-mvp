@@ -9,7 +9,7 @@ import { ProfileCompletionCard } from '../../components/dashboard/ProfileComplet
 import { RoadmapPreview } from '../../components/dashboard/RoadmapPreview';
 import { RecommendedProject } from '../../components/dashboard/RecommendedProject';
 import { TopOpportunitiesPreview } from '../../components/dashboard/TopOpportunitiesPreview';
-
+import {} from 'lucide-react'
 /**
  * Dashboard Overview Page
  * Path: /dashboard or /dashboard/overview
@@ -178,7 +178,7 @@ const Overview: React.FC = () => {
       <HeroSection userName={userName} />
 
       {/* Section 2: Quick Stats Grid (wider 3-column layout) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {/* Card A: Employability Score */}
         <EmployabilityCard
           score={studentStats.employabilityScore}
@@ -207,18 +207,16 @@ const Overview: React.FC = () => {
       
       </div>
 
-      {/* Section 3: Career Roadmap Preview */}
-      <div className="mt-2">
-        <RoadmapPreview
-          milestones={milestones}
-          onViewFull={() => navigate('/dashboard/roadmap')}
-          totalMilestones={8}
-        />
-      </div>
+      {/* Section 3: Career Roadmap Preview + Recommended Project (side-by-side) */}
+      <div className="mt-2 grid grid-cols-1 lg:grid-cols-3 gap-4 items-start">
+        <div className="lg:col-span-2">
+          <RoadmapPreview
+            milestones={milestones}
+            onViewFull={() => navigate('/dashboard/roadmap')}
+            totalMilestones={8}
+          />
+        </div>
 
-      {/* Section 4: Recommended Project & Top Opportunities */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-        {/* Left Column: Recommended Project */}
         <RecommendedProject
           title={recommendedProject.title}
           description={recommendedProject.description}
@@ -236,26 +234,26 @@ const Overview: React.FC = () => {
             console.log('Start project');
           }}
         />
+      </div>
 
-        {/* Right Column: Top Opportunities Preview */}
-        <div className="lg:col-span-2">
-          <TopOpportunitiesPreview
-            opportunities={topOpportunities.map((opp) => ({
-              id: opp.id,
-              title: opp.title,
-              company: opp.company,
-              type: opp.type,
-              matchPercent: opp.matchPercent,
-              deadline: opp.deadline,
-              icon: opp.icon,
-            }))}
-            onViewAll={() => navigate('/dashboard/opportunities')}
-            onApply={(opportunityId) => {
-              // TODO: Handle opportunity application
-              console.log('Apply to opportunity:', opportunityId);
-            }}
-          />
-        </div>
+      {/* Section 4: Top Opportunities (full-width below roadmap/project) */}
+      <div className="mt-4">
+        <TopOpportunitiesPreview
+          opportunities={topOpportunities.map((opp) => ({
+            id: opp.id,
+            title: opp.title,
+            company: opp.company,
+            type: opp.type,
+            matchPercent: opp.matchPercent,
+            deadline: opp.deadline,
+            icon: opp.icon,
+          }))}
+          onViewAll={() => navigate('/dashboard/opportunities')}
+          onApply={(opportunityId) => {
+            // TODO: Handle opportunity application
+            console.log('Apply to opportunity:', opportunityId);
+          }}
+        />
       </div>
 
       {/* Section 5: Quick Tips */}

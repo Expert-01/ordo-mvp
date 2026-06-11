@@ -38,7 +38,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ userName = 'Gi
           )}
         >
           {/* Content Container with max-width */}
-          <div className="max-w- mx-auto">
+          <div className="max-w-6xl mx-auto">
             <Outlet />
           </div>
         </main>
